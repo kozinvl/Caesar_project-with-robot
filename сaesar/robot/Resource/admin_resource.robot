@@ -31,3 +31,11 @@ Tab users
 
 Submit Button
     Click Button    css:.btn.btn-primary.submit
+
+Add Group
+    Click Button    xpath:/.//*[text()='Add group']
+
+Tab groups
+    Click Element    css:a[href*='groups
+
+Fill group fields

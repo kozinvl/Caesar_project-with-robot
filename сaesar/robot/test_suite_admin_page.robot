@@ -23,11 +23,19 @@ Checking title Admin page after login which was successful
     Page Should Contain    Caesar Admin Panel    It isn't Admin Page
     Close Browser
 
-Checking user after creating
+Checking User's second name after creating
     [Tags]    Admin Page3
     Login with arguments    qwerty    1234
     Go To    http://localhost:3000/admin
     Tab users
     Add User
-    Fill user fields    User    Tramp    Teacher    Dnipro    photo    123
+    Fill user fields    User    Vasiliy    Teacher    Dnipro    photo    123
     ...    123
+    Submit Button
+    Page Should Contain    Vasiliy    User wasn't created
+    Close Browser
+
+Checking Group name after creating
+    Login with arguments    qwerty    1234
+    Tab groups
+    Add Group
