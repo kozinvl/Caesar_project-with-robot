@@ -2,15 +2,32 @@
 Documentation     Test suite to testing admin's page
 Suite Setup
 Force Tags
+Default Tags      Admin Page
 Library           Selenium2Library
-Resource          Resource/resource.robot
+Resource          Resource/admin_resource.robot
 
 *** Test Cases ***
-Check title Group page after clicking home button at Admin Page
+Checking title Group page after clicking home button at Admin Page
     [Tags]    Admin Page
     [Timeout]
-    Login as Administrator
+    Login with arguments    qwerty    1234
     Go To    http://localhost:3000/admin
     Click Button    css:.btn.btn-warning.home
-    Title Should Be    Caesar
+    Title Should Be    Caesar    It isn't Group Page
     Close Browser
+
+Checking title Admin page after login which was successful
+    [Tags]    Admin Page
+    Login with arguments    qwerty    1234
+    Go To    http://localhost:3000/admin
+    Page Should Contain    Caesar Admin Panel    It isn't Admin Page
+    Close Browser
+
+Checking user after creating
+    [Tags]    Admin Page3
+    Login with arguments    qwerty    1234
+    Go To    http://localhost:3000/admin
+    Tab users
+    Add User
+    Fill user fields    User    Tramp    Teacher    Dnipro    photo    123
+    ...    123
