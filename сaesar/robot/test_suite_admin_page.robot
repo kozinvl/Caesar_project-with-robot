@@ -14,14 +14,14 @@ Checking title Group page after clicking home button at Admin Page
     Go To    http://localhost:3000/admin
     Click Button    css:.btn.btn-warning.home
     Title Should Be    Caesar    It isn't Group Page
-    Close Browser
+    [Teardown]    Close Browser
 
 Checking title Admin page after login which was successful
     [Tags]    Admin Page
     Login with arguments    qwerty    1234
     Go To    http://localhost:3000/admin
     Page Should Contain    Caesar Admin Panel    It isn't Admin Page
-    Close Browser
+    [Teardown]    Close Browser
 
 Checking User's second name after creating
     [Tags]    Admin Page
@@ -33,9 +33,9 @@ Checking User's second name after creating
     ...    123
     Submit Button
     Page Should Contain    Vasiliy    User hasn't been created
-    Close Browser
+    [Teardown]    Close Browser
 
-Checking Group name after creating
+Checking Group's name after creating
     [Tags]    Admin Page
     Login with arguments    qwerty    1234
     Go To    http://localhost:3000/admin
@@ -45,15 +45,27 @@ Checking Group name after creating
     ...    M. Omel`chuk    planned
     Submit Button
     Page Should Contain    DP-99-JS    Group hasn't been created
-    Close Browser
+    [Teardown]    Close Browser
 
-Checking student's name after creating
+Checking Student's name after creating
     [Tags]    A
     Login with arguments    qwerty    1234
     Go To    http://localhost:3000/admin
     Tab students
     Add Student
-    Fill student fields    DP-095JS    Victor    Caesar    Pre-intermediate    1    1
+    Fill student fields    DP-10-JS    Victor    Caesar    Pre-intermediate    1    1
     ...    99    N. Varenko
     Submit Button
-    Close Browser
+    Page Should Contain    DP-10-JS    Student hasn't been created
+    [Teardown]    Close Browser
+
+Checking Submit button after filling "Student" with empty fields
+    Login with arguments    qwerty    1234
+    Go to    http://localhost:3000/admin
+    Tab students
+    Add Student
+    Fill student fields    1    1    1    1    1    1
+    ...    1    1
+    Submit Button
+    Element Should Be Disabled    css:.btn.btn-primary.submit
+    [Teardown]    Close Browser

@@ -67,6 +67,7 @@ Fill student fields
 
 Add Student
     Click Button    xpath:.//*[text()='Add student']
+    Set Selenium Timeout    1
 
 Tab students
     Click Element    css:a[href*='students']
