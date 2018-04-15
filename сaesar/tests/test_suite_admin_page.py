@@ -84,7 +84,7 @@ class TestAdminPage(TestBase):
             fill_student_cv_url(''). \
             fill_student_entry_score(''). \
             fill_student_approved_by(''). \
-            is_enabled_submit_button
+            is_enabled_submit_button()
         self.assertFalse(is_enabled_submit_button)
 
     def test07_create_edit_empty_fields_group(self):
@@ -102,7 +102,7 @@ class TestAdminPage(TestBase):
             fill_group_teacher_name(''). \
             fill_group_experts_name(''). \
             fill_group_stage_level('planned'). \
-            is_enabled_submit_button
+            is_enabled_submit_button()
         self.assertFalse(is_enabled_submit_button)
 
     def test08_create_edit_max_length_fields_user(self):
