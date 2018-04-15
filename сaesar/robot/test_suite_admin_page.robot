@@ -59,13 +59,13 @@ Checking Student's name after creating
     Page Should Contain    DP-10-JS    Student hasn't been created
     [Teardown]    Close Browser
 
-Checking Submit button after filling "Student" with empty fields
+Checking Submit button after filling "Student" with symbol fields
     Login with arguments    qwerty    1234
     Go to    http://localhost:3000/admin
     Tab students
     Add Student
-    Fill student fields    1    1    1    1    1    1
-    ...    1    1
+    Fill student fields    '    '    '    Pre-intermediate    '    '
+    ...    '    '
     Submit Button
     Element Should Be Disabled    css:.btn.btn-primary.submit
     [Teardown]    Close Browser
