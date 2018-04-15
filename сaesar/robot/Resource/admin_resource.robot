@@ -9,7 +9,7 @@ Login with arguments
     Input Text    name=login    ${login}
     Input Password    name=password    ${password}
     Click Element    class=submit
-    Wait Until Page Contains    My Groups    5
+    Wait Until Page Contains    My Groups    10
 
 Add User
     Click Button    xpath:.//*[text()='Add user']
@@ -34,8 +34,39 @@ Submit Button
 
 Add Group
     Click Button    xpath:/.//*[text()='Add group']
+    Set Selenium Timeout    1
 
 Tab groups
-    Click Element    css:a[href*='groups
+    Click Element    css:a[href*='groups']
 
 Fill group fields
+    [Arguments]    ${name}    ${location}    ${direction}    ${start_date}    ${finish_date}    ${teachers}
+    ...    ${experts}    ${stage}
+    Wait Until Element Is Visible    name:stage    10
+    Input Text    name:name    ${name}
+    Select From List By Label    name:location    ${location}
+    Select From List By Label    name:direction    ${direction}
+    Press Key    name:startDate    ${start_date}
+    Press Key    name:finishDate    ${finish_date}
+    Input Text    name:teachers    ${teachers}
+    Input Text    name:experts    ${experts}
+    Select From List    name:stage    ${stage}
+
+Fill student fields
+    [Arguments]    ${group_id}    ${name}    ${last_name}    ${english_level}    ${cv}    ${image}
+    ...    ${entry_score}    ${approved_by}
+    Wait Until Element Is Visible    name:approvedBy    10
+    Input Text    name:groupId    ${group_id}
+    Input Text    name:name    ${name}
+    Input Text    name:lastName    ${last_name}
+    Select From List By Label    name:englishLevel    ${english_level}
+    Input Text    name:CvUrl    ${cv}
+    Input Text    name:imageUrl    ${image}
+    Input Text    name:entryScore    ${entry_score}
+    Input Text    name:approvedBy    ${approved_by}
+
+Add Student
+    Click Button    xpath:.//*[text()='Add student']
+
+Tab students
+    Click Element    css:a[href*='students']
