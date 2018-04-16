@@ -9,7 +9,7 @@ Login with arguments
     Input Text    name=login    ${login}
     Input Password    name=password    ${password}
     Click Element    class=submit
-    Wait Until Page Contains    My Groups    10
+    Wait Until Page Contains    My Groups    10    Element hasn't been found
 
 Add User
     Click Button    xpath:.//*[text()='Add user']
@@ -17,7 +17,7 @@ Add User
 Fill user fields
     [Arguments]    ${name}    ${last_name}    ${role}    ${location}    ${photo}    ${login}
     ...    ${password}
-    Wait Until Element Is Visible    name:firstName    10
+    Wait Until Element Is Visible    name:firstName    10    Element hasn't been found
     Input Text    name:firstName    ${name}
     Input Text    name:lastName    ${last_name}
     Select From List By Label    name:role    ${role}
@@ -42,7 +42,7 @@ Tab groups
 Fill group fields
     [Arguments]    ${name}    ${location}    ${direction}    ${start_date}    ${finish_date}    ${teachers}
     ...    ${experts}    ${stage}
-    Wait Until Element Is Visible    name:stage    10
+    Wait Until Element Is Visible    name:stage    10    Element hasn't been found
     Input Text    name:name    ${name}
     Select From List By Label    name:location    ${location}
     Select From List By Label    name:direction    ${direction}
@@ -55,7 +55,7 @@ Fill group fields
 Fill student fields
     [Arguments]    ${group_id}    ${name}    ${last_name}    ${english_level}    ${cv}    ${image}
     ...    ${entry_score}    ${approved_by}
-    Wait Until Element Is Visible    name:approvedBy    10
+    Wait Until Element Is Visible    name:approvedBy    10    Element hasn't been found
     Input Text    name:groupId    ${group_id}
     Input Text    name:name    ${name}
     Input Text    name:lastName    ${last_name}
