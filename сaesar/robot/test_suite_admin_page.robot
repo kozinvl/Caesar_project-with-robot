@@ -74,7 +74,7 @@ Checking Submit button after filling "Student" fields with symbol
     [Teardown]    Close Browser
 
 Checking button after filling "User" fields with symbols more than max length
-    [Tags]    A
+    [Tags]    Admin Page
     Login with arguments    qwerty    1234
     Go To    ${ADMIN URL}
     Tab users
@@ -91,3 +91,5 @@ Checking button after filling "User" login & password with special symbols
     Add User
     Fill user fields    Vasyl    Petrovich    Teacher    Dnipro    photo    !!!!!!
     ...    ;;;;;;
+    Element Should Be Disabled    css:.btn.btn-primary.submit
+    [Teardown]    Close Browser
