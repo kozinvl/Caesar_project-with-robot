@@ -1,10 +1,15 @@
 *** Settings ***
 Library           Selenium2Library
 
+*** Variables ***
+${LOGIN URL}      http://localhost:3000/
+${BROWSER}        chrome
+${ADMIN URL}      http://localhost:3000/admin
+
 *** Keywords ***
 Login with arguments
     [Arguments]    ${login}    ${password}
-    Open Browser    http://localhost:3000    chrome
+    Open Browser    ${LOGIN URL}    ${BROWSER}
     Maximize Browser Window
     Input Text    name=login    ${login}
     Input Password    name=password    ${password}
@@ -13,11 +18,12 @@ Login with arguments
 
 Add User
     Click Button    xpath:.//*[text()='Add user']
+    Set Selenium Timeout    2
 
 Fill user fields
     [Arguments]    ${name}    ${last_name}    ${role}    ${location}    ${photo}    ${login}
     ...    ${password}
-    Wait Until Element Is Visible    name:firstName    10    Element hasn't been found
+    Wait Until Element Is Visible    name:firstName    15    Element hasn't been found
     Input Text    name:firstName    ${name}
     Input Text    name:lastName    ${last_name}
     Select From List By Label    name:role    ${role}
@@ -34,7 +40,7 @@ Submit Button
 
 Add Group
     Click Button    xpath:/.//*[text()='Add group']
-    Set Selenium Timeout    1
+    Set Selenium Timeout    2
 
 Tab groups
     Click Element    css:a[href*='groups']
@@ -67,7 +73,7 @@ Fill student fields
 
 Add Student
     Click Button    xpath:.//*[text()='Add student']
-    Set Selenium Timeout    1
+    Set Selenium Timeout    2
 
 Tab students
     Click Element    css:a[href*='students']
