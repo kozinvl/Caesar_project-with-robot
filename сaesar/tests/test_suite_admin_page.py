@@ -106,7 +106,8 @@ class TestAdminPage(TestBase):
         self.assertFalse(is_enabled_submit_button)
 
     def test08_create_edit_max_length_fields_user(self):
-        """ Checking button after filling with more than max length.
+        """ Checking button after filling login/password
+        with more than max length.
         P.S max length of login/password field is 10 symbols.
         It will be failed."""
         is_enabled_submit_button = self.admin_page. \
@@ -123,7 +124,8 @@ class TestAdminPage(TestBase):
         self.assertFalse(is_enabled_submit_button)
 
     def test09_create_edit_symbols_user(self):
-        """ Checking button after filling with symbols
+        """ Checking button after filling login/password
+         with special symbols
         It will be failed."""
         is_enabled_submit_button = self.admin_page. \
             tab_users(). \
@@ -133,8 +135,8 @@ class TestAdminPage(TestBase):
             fill_user_role_type('Teacher'). \
             fill_user_city('Dnipro'). \
             fill_user_photo('photo'). \
-            fill_user_login('b' * 11). \
-            fill_user_password('a' * 11). \
+            fill_user_login(';' * 4). \
+            fill_user_password('!' * 4). \
             is_enabled_submit_button()
         self.assertFalse(is_enabled_submit_button)
 
