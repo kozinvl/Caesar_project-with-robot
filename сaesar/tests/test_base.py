@@ -3,9 +3,7 @@ from selenium import webdriver
 from resource.url_site import PathUrl
 from resource.path_driver import GetDriver
 from caesar_items.pages.login_page import LogInPage
-# from selenium.webdriver.common.action_chains import ActionChains
-# from selenium.webdriver.common.keys import Keys
-# import time
+import logging
 
 
 class TestBase(unittest.TestCase):
@@ -16,7 +14,11 @@ class TestBase(unittest.TestCase):
         self.driver.get(PathUrl.SITE_URL)
         self.driver.maximize_window()
         self.login_page = LogInPage(self.driver)
+        logging.basicConfig(filename="test.log", level=logging.WARNING,
+                            format='%(levelname)s:%(name)s:[%(funcName)s]:%(message)s')
+        logging.warning('\nTest is running!...')
 
     def tearDown(self):
+        logging.getLogger(__name__)
+        logging.warning('\nTest was finished!\n')
         self.driver.quit()
-
