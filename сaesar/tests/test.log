@@ -1,0 +1,11 @@
+WARNING:root:[setUp]:
+Test is running!...
+WARNING:root:[tearDown]:
+Test was finished!
+
+WARNING:root:[setUp]:
+Test is running!...
+WARNING:root:[test02_title_admin_page]:Title name doesn't math expected result
+WARNING:root:[tearDown]:
+Test was finished!
+
