@@ -1,6 +1,7 @@
 from resource.users_base import *
 from tests.test_base import TestBase
 import logging
+from resource.error_handler import logger_exception
 
 
 class TestAdminPage(TestBase):
@@ -9,22 +10,19 @@ class TestAdminPage(TestBase):
         self.group_page = self.login_page.auto_login(first_admin)
         self.admin_page = self.group_page.open_admin_page()
 
+    @logger_exception
     def test01_admin_escape_home_button(self):
         """ Checking escape home button on admin page."""
         self.admin_page.back_home()
-        try:
-            self.assertEqual("Caesar", self.admin_page.get_title_name())
-        except AssertionError:
-            logging.warning("Title name doesn't math expected result")
+        self.assertEqual("Caesar", self.admin_page.get_title_name())
 
+    @logger_exception
     def test02_title_admin_page(self):
         """ Checking admin's title name."""
         title_page = self.admin_page.get_title_name()
-        try:
-            self.assertEqual("Caesar Admin Panel", title_page)
-        except AssertionError:
-            logging.warning("Title name doesn't math expected result")
+        self.assertEqual("Caesar Admin Panel", title_page)
 
+    @logger_exception
     def test03_create_edit_users(self):
         """ Checking user in user's table after creating."""
         actual_table = self.admin_page. \
@@ -42,6 +40,7 @@ class TestAdminPage(TestBase):
         expected_result = ["User"]
         self.assertIn(expected_result, actual_table)
 
+    @logger_exception
     def test04_create_edit_groups(self):
         """ Checking group after creating."""
         actual_table = self.admin_page. \
@@ -61,6 +60,7 @@ class TestAdminPage(TestBase):
         expected_result = ['DP-095JS']
         self.assertIn(expected_result, actual_result)
 
+    @logger_exception
     def test05_create_edit_students(self):
         """ Checking student after creating."""
         actual_table = self.admin_page. \
@@ -78,6 +78,7 @@ class TestAdminPage(TestBase):
         expected_student = ['Victor']
         self.assertIn(expected_student, actual_table)
 
+    @logger_exception
     def test06_create_edit_empty_fields_student(self):
         """ Checking button after filling with empty fields.
         It will be failed."""
@@ -94,6 +95,7 @@ class TestAdminPage(TestBase):
             is_enabled_submit_button()
         self.assertFalse(is_enabled_submit_button)
 
+    @logger_exception
     def test07_create_edit_empty_fields_group(self):
         """ Checking button after filling by empty fields.
         It will be failed."""
@@ -112,6 +114,7 @@ class TestAdminPage(TestBase):
             is_enabled_submit_button()
         self.assertFalse(is_enabled_submit_button)
 
+    @logger_exception
     def test08_create_edit_max_length_fields_user(self):
         """ Checking button after filling login/password
         with more than max length.
@@ -130,6 +133,7 @@ class TestAdminPage(TestBase):
             is_enabled_submit_button()
         self.assertFalse(is_enabled_submit_button)
 
+    @logger_exception
     def test09_create_edit_symbols_user(self):
         """ Checking button after filling login/password
          with special symbols
@@ -147,6 +151,7 @@ class TestAdminPage(TestBase):
             is_enabled_submit_button()
         self.assertFalse(is_enabled_submit_button)
 
+    @logger_exception
     def test10_delete_user_after_create(self):
         """ Checking users' table after deleting
         user who has been added recently."""

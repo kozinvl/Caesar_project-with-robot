@@ -19,6 +19,5 @@ class TestBase(unittest.TestCase):
         logging.warning('\nTest is running!...')
 
     def tearDown(self):
-        logging.getLogger(__name__)
         logging.warning('\nTest was finished!\n')
         self.driver.quit()
