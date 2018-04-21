@@ -19,7 +19,6 @@ def logger_exception(function):
 
     @functools.wraps(function)
     def wrapper(*args, **kwargs):
-        logger = create_logger()
         try:
             return function(*args, **kwargs)
         except Exception:
