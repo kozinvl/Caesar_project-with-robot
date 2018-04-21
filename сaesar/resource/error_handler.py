@@ -6,9 +6,9 @@ def create_logger():
     """
     Creates a logging object and returns it
     """
-    logger = logging.getLogger("inner logger")
-    logger.setLevel(logging.INFO)
-    return logger
+    logging.basicConfig(filename="test.log", level=logging.WARNING,
+                        format='%(levelname)s:%(name)s:[%(funcName)s]:%(message)s')
+    return logging
 
 
 def logger_exception(function):
